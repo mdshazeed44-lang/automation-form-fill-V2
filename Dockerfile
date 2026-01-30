@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Install system dependencies
+# System dependencies (Playwright)
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
@@ -28,22 +28,17 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy requirements
+# Python deps
 COPY requirements.txt .
-
-# Install Python packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright browsers
+# Playwright
 RUN playwright install chromium
 RUN playwright install-deps chromium
 
-# Copy application files
+# App code only (NO secrets)
 COPY auto_contact_form.py .
-COPY form-automation-484413-489b8d00026a.json .
 
-# Environment
 ENV PYTHONUNBUFFERED=1
 
-# Run
 CMD ["python", "-u", "auto_contact_form.py"]
