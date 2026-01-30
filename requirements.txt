@@ -1,0 +1,13 @@
+flask
+gspread
+playwright
+pandas
+requests
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2==0.1.1
+asyncio==3.4.3
+
+
+

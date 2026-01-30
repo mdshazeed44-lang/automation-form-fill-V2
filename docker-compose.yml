@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  form-filler:
+    build: .
+    container_name: form-filler-app
+    restart: "no"  # ✅ IMPORTANT - No auto-restart
+    
+    environment:
+      - DISPLAY=:99
+    
+    # Resource limits
+    mem_limit: 2g
+    mem_reservation: 512m
+    cpus: 1.5
+    
+    # Stop settings
+    stop_grace_period: 30s
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

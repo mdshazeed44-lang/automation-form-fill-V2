@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Credentials - IMPORTANT!
+*.json
+form-automation-*.json
+
+# Environment variables
+.env
+
+# Debug files
+debug_*.png
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
