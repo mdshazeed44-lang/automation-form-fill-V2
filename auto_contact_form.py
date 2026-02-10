@@ -1201,9 +1201,18 @@ async def process_website_forms(url: str, sheet_data: dict, row_index: int = 0,
             own_pw = True
             
         browser = await pw_instance.chromium.launch(
-            headless=Config.HEADLESS,
-            slow_mo=Config.SLOW_MO,
-        )
+          headless=True,
+          slow_mo=Config.SLOW_MO,
+          args=[
+              "--no-sandbox",
+              "--disable-setuid-sandbox",
+              "--disable-dev-shm-usage",
+              "--disable-gpu",
+              "--no-zygote",
+              "--single-process",
+              "--disable-software-rasterizer"
+          ]
+         )
         context = await browser.new_context(
             viewport={"width": Config.VIEWPORT_W, "height": Config.VIEWPORT_H},
             user_agent=Config.USER_AGENT,
