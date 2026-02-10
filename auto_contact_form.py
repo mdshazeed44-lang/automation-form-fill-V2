@@ -99,7 +99,7 @@ class Config:
     MAX_VALIDATION_LOOPS = 2          # 2 re-fill cycles
 
     # ── Browser ──────────────────────────────────────────────────────────
-    HEADLESS = False
+    HEADLESS = True
     SLOW_MO = 20                      # 20ms delay
     VIEWPORT_W = 1920
     VIEWPORT_H = 1080
